@@ -42,14 +42,16 @@ def m_sort(array)
 	  b = m_sort(b)
 	  
 	  return merage(a, b)
-
 	end	
-	
-	
-
     
-    
-
+	if array.size == 8
+	  a = array.slice(0, array.size / 2)
+	  b = array.slice(array.size / 2, array.size )
+	  a = m_sort(a) 
+	  b = m_sort(b)
+	  
+	  return merage(a, b)
+	end
 end
 
 def crate_array (size, width)
@@ -60,8 +62,8 @@ def crate_array (size, width)
   return array
 end
 
-array = [2, 3, 1, 5]
+array = [2, 3, 1, 5, 1, 7, 4, 8]
  
 print m_sort(array)
 
-print merage([1,2,3,4], [1,1,2,3,5] )
+
