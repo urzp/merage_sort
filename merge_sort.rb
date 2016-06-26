@@ -1,8 +1,9 @@
 def merage(a, b)
   c = []
   count = a.size + b.size
+  
   count.times do
-    if !a.empty? and !b.empty?
+    if !a.empty? && !b.empty?
       if a[0] < b[0]
 	    c << a[0]
 		a.delete_at(0)
@@ -10,11 +11,11 @@ def merage(a, b)
 	    c << b[0]
 		b.delete_at(0)
 	  end
-	end
-		
-	if a.empty?
-	  c = c + b
-	  break
+	end	
+	
+	if a.empty? 
+	  c = c + b 
+	  break 
 	end
 		
 	if b.empty?
@@ -28,30 +29,13 @@ end
 
 
 def m_sort(array)
-    
-	if array.size == 2
-	  a = array[0]
-	  b = array[-1]
-	  return a < b ? [a, b] : [b, a]
-	end
+  a = array.slice(0, array.size / 2)
+  b = array.slice(array.size / 2, array.size )
 
-	if array.size == 4
-	  a = array.slice(0, array.size / 2)
-	  b = array.slice(array.size / 2, array.size )
-	  a = m_sort(a) 
-	  b = m_sort(b)
+  a = m_sort(a) if array.size > 1
+  b = m_sort(b) if array.size > 1 
 	  
-	  return merage(a, b)
-	end	
-    
-	if array.size == 8
-	  a = array.slice(0, array.size / 2)
-	  b = array.slice(array.size / 2, array.size )
-	  a = m_sort(a) 
-	  b = m_sort(b)
-	  
-	  return merage(a, b)
-	end
+  return merage(a, b)
 end
 
 def crate_array (size, width)
@@ -62,8 +46,11 @@ def crate_array (size, width)
   return array
 end
 
-array = [2, 3, 1, 5, 1, 7, 4, 8]
- 
+#array = [2, 3, 1, 5, 1, 7, 4]
+array = crate_array(100, 100)
+print  array
+puts 
+puts '****************************'
 print m_sort(array)
 
 
